@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      ul li {
+        list-style: none;
+      }
+      .fab-container {
+        position: fixed;
+        top: 50px;
+        right: 30px;
+      }
+
+      .fab-btn {
+        width: 60px;
+        height: 60px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.3s ease-in-out;
+      }
+      .fab-btn i {
+        font-size: 24px;
+        transition: transform 0.1s ease-in-out;
+      }
+
+      .fab-menu {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .fab-item {
+        width: 50px;
+        height: 50px;
+        background-color: white;
+        color: #007bff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      /* .fab-item i {
+        font-size: 20px;
+      } */
+    </style>
+  </head>
+  <body>
+    <div class="fab-container">
+      <div class="fab-btn">
+        <i class="material-icons">cloud</i>
+      </div>
+      <div class="fab-menu">
+        <ul>
+          <li>
+            <a href="#" class="fab-item"><i class="material-icons">cloud</i></a>
+          </li>
+          <li>
+            <a href="#" class="fab-item">
+              <i class="material-icons" style="color: red">attachment</i>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="fab-item"><i class="material-icons">computer</i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      // script.js
+      $(document).ready(function () {
+        $('.fab-container').hover(
+          function () {
+            // 鼠标进入
+            let $fabBtn = $(this).find('.fab-btn')
+            let $icon = $fabBtn.find('i')
+            let altIcon = $fabBtn.data('alt-icon')
+
+            // 动画旋转图标并替换图标
+            $icon.animate(
+              { borderSpacing: 180 },
+              {
+                step: function (now) {
+                  $(this).css('transform', 'rotate(' + now + 'deg)')
+                },
+                duration: 300
+              },
+              'linear',
+              function () {
+                $icon.attr('class', altIcon)
+              }
+            )
+
+            // 显示菜单
+            $(this).find('.fab-menu').fadeIn(300)
+          },
+          function () {
+            // 鼠标离开
+            let $fabBtn = $(this).find('.fab-btn')
+            let $icon = $fabBtn.find('i')
+            let originalIcon = $fabBtn.data('icon')
+
+            // 动画旋转图标并恢复原始图标
+            $icon.animate(
+              { borderSpacing: 0 },
+              {
+                step: function (now) {
+                  $(this).css('transform', 'rotate(' + now + 'deg)')
+                },
+                duration: 300
+              },
+              'linear',
+              function () {
+                $icon.attr('class', originalIcon)
+              }
+            )
+
+            // 隐藏菜单
+            $(this).find('.fab-menu').fadeOut(300)
+          }
+        )
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* body {
+        background-image: url(img/image1.png);
+      } */
+      .bigcontainer {
+        display: flex;
+        max-width: 1000px;
+        margin: auto;
+        align-items: center;
+        justify-content: center;
+      }
+      .container {
+        display: flex;
+        max-width: 80%;
+        /* margin: auto; */
+        /* padding: 20px; */
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        border-top: 1px solid #ccc;
+      }
+      .cardgroup {
+        display: flex;
+        max-width: 100%;
+        /* margin: auto; */
+        padding: 20px;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        border-top: 1px solid #ccc;
+      }
+      .cardgroup .card {
+        margin: 15px;
+        width: 100%;
+        height: 400px;
+        border-radius: 10px;
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        text-align: center;
+        transition: transform 0.3s;
+      }
+      .cardgroup .card img {
+        /* 这里图片不受父容器边框圆角影响，卡片左上和右上还是尖角，所以在这里再次定义图片边框圆角 */
+        border-radius: 10px 10px 0 0;
+        width: 100%;
+        height: 80%;
+        object-fit: cover;
+      }
+      .cardgroup .card:hover {
+        transform: translate(-5px, -10px);
+      }
+      .cardgroup .card a {
+        text-decoration: none;
+        color: #333;
+        font-size: 20px;
+      }
+      .content {
+        width: 80%;
+        height: 800px;
+        padding: 100px;
+        border-left: 2px solid #ccc;
+        /* background-color: #238522; */
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bigcontainer">
+      <div class="container">
+        <div class="cardgroup">
+          <div class="card" data-content="content1">
+            <a href="">
+              <img src="img/image1.png" alt="" />
+              <p>一段文字</p>
+            </a>
+          </div>
+        </div>
+
+        <div class="cardgroup">
+          <div class="card" data-content="content2">
+            <a href="">
+              <img src="img/image1.png" alt="" />
+              <p>一段文字</p>
+            </a>
+          </div>
+        </div>
+        <div class="cardgroup">
+          <div class="card" data-content="content3">
+            <a href="">
+              <img src="img/image1.png" alt="" />
+              <p>一段文字</p>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="content" id="content1">
+        <h2>内容 1</h2>
+        <p>这里是内容 1 的详细信息。</p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit qui consequuntur tempore
+          dolorum iste autem corporis asperiores, dignissimos excepturi, quasi neque, rem incidunt
+          sapiente nemo nisi mollitia fuga corrupti quaerat?
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni facilis animi earum
+          architecto, quas, corporis adipisci, reprehenderit cum nam placeat nulla nisi perspiciatis
+          hic iusto distinctio. Ipsum ab vero aliquid!
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis esse corrupti
+          consectetur incidunt, sed optio maxime blanditiis dolore delectus maiores, natus nisi
+          dignissimos tempora illum, quibusdam eveniet non sint? Nesciunt!
+        </p>
+      </div>
+      <div class="content" id="content2">
+        <h2>内容 2</h2>
+        <p>这里是内容 2 的详细信息。</p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit qui consequuntur tempore
+          dolorum iste autem corporis asperiores, dignissimos excepturi, quasi neque, rem incidunt
+          sapiente nemo nisi mollitia fuga corrupti quaerat?
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni facilis animi earum
+          architecto, quas, corporis adipisci, reprehenderit cum nam placeat nulla nisi perspiciatis
+          hic iusto distinctio. Ipsum ab vero aliquid!
+        </p>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla voluptate nesciunt maxime
+          incidunt eos, vero omnis? Distinctio, ea placeat laboriosam eos ratione, odit fugit eaque
+          non fuga veritatis nesciunt quaerat.
+        </p>
+      </div>
+      <div class="content" id="content3">
+        <h2>内容 3</h2>
+        <p>这里是内容 3 的详细信息。</p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit qui consequuntur tempore
+          dolorum iste autem corporis asperiores, dignissimos excepturi, quasi neque, rem incidunt
+          sapiente nemo nisi mollitia fuga corrupti quaerat?
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni facilis animi earum
+          architecto, quas, corporis adipisci, reprehenderit cum nam placeat nulla nisi perspiciatis
+          hic iusto distinctio. Ipsum ab vero aliquid!
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis esse corrupti
+          consectetur incidunt, sed optio maxime blanditiis dolore delectus maiores, natus nisi
+          dignissimos tempora illum, quibusdam eveniet non sint? Nesciunt!
+        </p>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('.card a').on('click', function (e) {
+          e.preventDefault()
+          var contentId = $(this).parent().data('content')
+          $('.cardgroup').css({ width: '200px', padding: '10px', transform: 'translateX(-50px)' })
+          $('.card').css({ width: '180px', height: '250px', margin: '0' })
+          $('.content').css({ display: 'none' })
+          $('#' + contentId).css({ display: 'block' })
+        })
+      })
+    </script>
+  </body>
+</html>
+<p>
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed modi, nisi adipisci quam eveniet
+  quas quo cupiditate sapiente magni. Minima voluptate nam cupiditate illo distinctio quae
+  voluptates neque tempora quibusdam! A perferendis corporis quisquam facere nihil impedit voluptas
+  magnam sed omnis tenetur, velit aspernatur quis ratione dolore repellat cum repellendus placeat
+  illo dolorem qui ducimus perspiciatis sint dignissimos vel. Sit?
+</p>
+<p>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam a illum adipisci dolorem obcaecati
+  nisi quas in quos, ab quisquam sequi cumque laborum molestias doloremque optio necessitatibus!
+  Atque, odio dolore. Quisquam quos provident, libero assumenda id eligendi eaque quis delectus!
+  Deleniti itaque labore nisi nesciunt suscipit ad eaque, dolorum quam voluptatem vel! Atque
+  repellat commodi voluptate sed eligendi! Est, nisi. Reprehenderit alias voluptatem nulla
+  laboriosam dolorum natus dolor tempore? Officia laborum quaerat voluptatem dolorum fugiat
+  aspernatur corrupti ut, eos accusamus impedit eveniet. Officiis expedita sapiente vero id? Iure,
+  consequatur tempora!
+</p>
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, et quisquam iure dolores tempore
+  dignissimos qui quae fuga nesciunt fugit laboriosam saepe incidunt eum nulla iste consequuntur
+  facilis distinctio? Aliquid.
+</p>

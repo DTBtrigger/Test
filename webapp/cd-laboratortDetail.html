@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 1000px;
+        /* background-color: aqua; */
+      }
+      .sidenav {
+        height: 800px;
+        width: 200px;
+        border-right: #333;
+        margin: 20px;
+        /* background-color: #333; */
+        padding-top: 20px;
+      }
+      .sidenav a {
+        padding: 8px 8px 8px 16px;
+        text-decoration: none;
+        font-size: 25px;
+        /* color: white; */
+        display: block;
+        transition: 0.3s;
+      }
+      .sidenav a:hover {
+        background-color: #575757;
+      }
+      .content {
+        margin-left: 220px;
+        padding: 20px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidenav">
+        <a href="#" class="nav-link" data-target="925">Section 1</a>
+        <a href="#" class="nav-link" data-target="927">Section 2</a>
+        <a href="#" class="nav-link" data-target="929">Section 3</a>
+      </div>
+
+      <div class="content" id="925">
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe exercitationem, fugiat
+          voluptatem magnam eius perspiciatis rem cumque iste dolor reiciendis excepturi, id harum
+          voluptate corporis repudiandae mollitia eaque distinctio sunt.
+        </p>
+      </div>
+      <div class="content" id="927">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum expedita nihil atque
+          mollitia quis iste doloremque necessitatibus omnis voluptatum, itaque soluta enim
+          doloribus ipsam ducimus voluptates reiciendis numquam distinctio rerum?
+        </p>
+      </div>
+      <div class="content" id="929">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias dolores non eius alias,
+          inventore, earum maxime nesciunt, ducimus animi cupiditate obcaecati aliquid consequuntur
+          ullam temporibus reiciendis voluptate. Ab, adipisci tempore.
+        </p>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('.nav-link').on('click', function (e) {
+          e.preventDefault()
+          var targetId = $(this).data('target')
+          $('.content').hide()
+          $('#' + targetId).show()
+        })
+      })
+    </script>
+  </body>
+</html>

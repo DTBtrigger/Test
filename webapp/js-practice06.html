@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <button class="function()"></button> -->
+    <script>
+      // function ask(question, yes, no) {
+      //   if (confirm(question)) yes()
+      //   else no()
+      // }
+      // // let ask = (question, yes, no) =>
+      // ask(
+      //   'do you agree?',
+      //   () => alert('you agreed'),
+      //   () => alert('you canceled')
+      //   // function () {
+      //   //   alert('you agreed.')
+      //   // },
+      //   // function () {
+      //   //   alert('you canceled.')
+      //   // }
+      // )
+      let user = {}
+      user.name = 'John'
+      user.surname = 'Smith'
+      user.name = 'Pete'
+      delete user.name
+      function isEmpty(obj) {
+        for (let key in obj) {
+          return false
+        }
+        return true
+      }
+      console.log(isEmpty(user))
+      let salaries = {
+        John: 100,
+        Ann: 160,
+        Pete: 130
+      }
+      let sum = (salaries) => {
+        let sum = 0
+        for (let key in salaries) {
+          sum = sum + salaries[key]
+        }
+        return sum
+      }
+      console.log(sum(salaries))
+      let codes = {
+        '+21': 'd',
+        '+98': 'c',
+        '+67': 'l'
+      }
+      for (let key in codes) {
+        console.log(+key)
+      }
+      let menu = {
+        width: 200,
+        height: 300,
+        title: 'My menu'
+      }
+      for (let key in menu) {
+        if (typeof menu[key] == 'number') {
+          menu[key] = menu[key] * 2
+        }
+        // console.log(menu[key])
+      }
+      for (let key in menu) {
+        console.log(menu[key])
+      }
+      let all = Object.assign({}, user, menu)
+      console.log(all)
+
+      // let man = {}
+      // let woman = {}
+      function marry(man, woman) {
+        woman.husband = man
+        man.wife = woman
+        return {
+          father: man,
+          mother: woman
+        }
+      }
+
+      let famly = marry({ name: 'John' }, { name: 'Ann' })
+      console.log(famly)
+      let calculator = {
+        a: 0,
+        b: 0,
+
+        read() {
+          this.a = Number(prompt('a?', 0)) //prompt返回字符串，所以要类型转换
+          this.b = Number(prompt('b?', 0)) //类型转换和Java不一样
+        },
+        sum() {
+          return this.a + this.b
+        },
+        mul() {
+          return this.a * this.b
+        }
+      }
+      calculator.read()
+      alert(calculator.sum())
+      alert(calculator.mul())
+    </script>
+  </body>
+</html>
