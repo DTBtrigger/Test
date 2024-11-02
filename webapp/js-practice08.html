@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>
+      授课周简化显示。例如 [1,2,3,4,5,6,7,8]，1-8 [1,2,3,5,6,7,8]，1-3, 5-8 [1,2,4,6,7,8], 1-2,4,6-8
+      [1]，1 输入是数字数组，输出是字符串即可
+    </p>
+    <script>
+      let formatted = ''
+      let num = [1, 2, 4, 5, 8]
+
+      //   formatted = formatted + num[0]
+
+      let start = num[0].toString()
+
+      //   console.log(num.length)
+      for (let i = 1; i < num.length; i++) {
+        if (num[i] !== num[i - 1] + 1) {
+          end = num[i - 1].toString()
+          if (start == end) {
+            formatted = formatted + start + ','
+          } else {
+            formatted = formatted + start + '-' + end + ','
+          }
+          start = num[i].toString()
+        }
+      }
+      end = num[num.length - 1]
+      if (start == end) {
+        formatted = formatted + start + ','
+      } else {
+        formatted = formatted + start + '-' + end + ','
+      }
+      console.log(formatted)
+    </script>
+  </body>
+</html>
