@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+        flex-direction: column;
+        background-color: rgb(234, 222, 200);
+      }
+      .banner {
+        width: 100%;
+        height: 600px;
+        /* overflow: hidden; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .banner video {
+        height: 100%;
+        object-fit: fill;
+        width: 100%;
+        pointer-events: none;
+      }
+      .banner .introduce {
+        position: absolute;
+        top: 80px;
+        z-index: 1;
+        max-width: 500px;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 3em;
+        text-shadow: 0 5px 10px rgba(0, 0, 0, 1);
+        mix-blend-mode: overlay;
+      }
+
+      .change {
+        width: 95%;
+        height: 550px;
+        display: flex;
+        margin: 60px auto;
+        /* justify-content: center; */
+        /* flex-wrap: wrap; */
+      }
+      .change-box {
+        flex: 1;
+        height: 100%;
+        overflow: hidden;
+        transition: 0.5s;
+        /* margin: 0 10px; */
+        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        /* border: 3px solid #fff; */
+        background-color: #fff;
+        position: relative;
+        display: flex;
+      }
+      .change-box .change-introduce img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.5s;
+      }
+      .change-box .change-introduce {
+        font: 200 35px;
+        text-align: center;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: absolute;
+        bottom: -100%;
+        left: 0;
+        background-color: rgb(229, 220, 174);
+        opacity: 0;
+        transition: bottom 0.5s ease, opacity 0.5s ease;
+      }
+      .change-box:hover {
+        flex-basis: 40%;
+        border-radius: 15px;
+      }
+      .change-box:hover > img {
+        opacity: 0.3;
+        /* width: 100%;
+        height: 100%; */
+      }
+      .change-box:hover > .change-introduce {
+        opacity: 0.7;
+        bottom: 0;
+        /* width: 100%;
+        height: 100%; */
+      }
+      .change-box .change-introduce p {
+        text-indent: 2em;
+        text-align: left;
+      }
+
+      .detail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .detail .detail-box {
+        display: flex;
+        align-items: center;
+      }
+      .detail .trapezoid-box1 {
+        width: 60%;
+        height: 500px;
+        /* background-color: #3498db; */
+        clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+      .detail .trapezoid-box2 {
+        width: 60%;
+        height: 500px;
+        /* background-color: #3498db; */
+        clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+      .detail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .detail .detail-introduce {
+        width: 40%;
+        padding: 0 30px;
+        display: flex;
+        justify-self: center;
+        align-items: center;
+        flex-direction: column;
+        color: rgb(99, 95, 50);
+      }
+      .detail .detail-introduce p {
+        text-indent: 2em;
+      }
+      .shell {
+        width: 95%;
+        height: 400px;
+        display: flex;
+        margin: 60px auto;
+        justify-content: center;
+        /* flex-wrap: wrap; */
+      }
+      .box {
+        flex: 1;
+        height: 100%;
+        overflow: hidden;
+        transition: 0.5s;
+        /* margin: 0 10px; */
+        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+        /* border-radius: 15px; */
+        /* border: 3px solid #fff; */
+        background-color: #fff;
+      }
+      .box > img {
+        width: 200%;
+        height: 85%;
+        object-fit: cover;
+        transition: 0.5s;
+      }
+      .box > span {
+        font-size: 20px;
+        color: rgb(100, 100, 100);
+        background-color: rgb(210, 219, 198);
+        text-align: center;
+        height: 15%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .box:hover {
+        flex-basis: 40%;
+        border-radius: 15px;
+      }
+      .box:hover > img {
+        width: 100%;
+        height: 100%;
+      }
+      /* ----------------------------------------------------- */
+      .content {
+        opacity: 0;
+        transition: opacity 3s ease, transform 3s ease;
+        transform: translateY(30px);
+      }
+      .content.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="banner">
+      <video autoplay muted loop>
+        <source src="img/sportsvideo06.mp4" type="video/mp4" />
+      </video>
+      <div class="introduce">
+        <h1>非遗体育</h1>
+      </div>
+    </div>
+
+    <div class="change content">
+      <div class="change-box">
+        <img src="img/sports12.jpg" alt="" />
+        <div class="change-introduce">
+          <h2>射箭</h2>
+          <p>
+            射箭，在中国有着非常悠久的历史。最早，射箭作为一种生存方式存在，古人们用弓箭🏹️来抓捕猎物。西周时期，射箭作为“六艺礼”之一，形成射礼。
+          </p>
+          <p>
+            魏晋南北朝时，射箭已经正式成为一项体育竞技类活动。在《北史·魏宗室常山王遵传》里提到：“濮阳王顺，善射。孝武帝在洛阳华林国戏射，以银酒卮容二升许悬于百步外，令善射者十余人共射，中者赐之。顺发而中。”🏆这记载了一件关于射箭的事，北魏孝武帝在洛阳的华林园举办了一场射箭比赛，一个两升容量的银杯被悬挂在百步之外，让十多位善于射箭的人进行竞争，谁能射中谁就能获得这只银杯。最后濮阳王获胜。
+          </p>
+          <p>再往后射箭作为一种运动开始慢慢大众化，成为了王孙贵族们娱乐消遣的方式</p>
+          <p>
+            北宋的欧阳修制定了一个“九射格”，就是把古射礼融入酒令中，将九种动物画在一起，中间是熊，上方是虎，下方是鹿，右绘雕、雉、猿，左侧雁、兔、鱼，每种动物都有对应的酒的位置，射中了就要根据所在位置的酒而饮之。
+          </p>
+          <p>
+            元朝和清朝都是善于射骑的民族，所以射箭狩猎本就备受重视。而明代也十分重视射箭文化，明太祖朱元璋积极恢复了射礼，还制定了专门的大射礼礼制。（“大射礼”其实就是先秦时期的射礼运动会）
+          </p>
+        </div>
+      </div>
+      <div class="change-box">
+        <img src="img/sports10.jpg" alt="" />
+        <div class="change-introduce">
+          <h2>马球</h2>
+          <p>
+            马球是三大马上体育运动（马球、马术和赛马）之一，被誉为“王者的运动”，深受中国古代皇帝、英国皇室、马来西亚皇室的喜爱。
+          </p>
+          <p>
+            唐朝，十八位皇帝都是马球狂热粉丝。
+            据文献记载，当时相邻的渤海、高丽、日本等国都有与唐王朝进行马球竞技的描述。
+          </p>
+          <p>
+            北宋时期，女性马球运动也有了较大发展。宋徽宗时组建了宫廷女子马球队，并在一年一度的春日，于汴京城新郑门外金明池进行表演，其是最精彩的项目之一。
+          </p>
+          <p>明朝，马球渐渐衰落，变成了纯粹的只有娱乐观赏性质的运动。</p>
+          <p>到了清朝，满人重视本民族的特色活动冰嬉等，对马球更加不上心。</p>
+          <p>2008年6月7日，马球经国务院批准列入第二批国家级非物质文化遗产名录。</p>
+        </div>
+      </div>
+      <div class="change-box">
+        <img src="img/sports11.png" alt="" />
+        <div class="change-introduce">
+          <h2>八段锦</h2>
+          <p>
+            八段锦起源之说最早是在汉代： 三座西汉的墓葬中发现了一幅距今 1200 多年的导引图，其中有 5
+            个动作与后世立式八段锦的功法动作相似。
+          </p>
+          <p>
+            名词“八段锦” 出现在魏晋南北朝： 八段锦最早的文字记载出现在东晋《神仙传》作者是葛洪。
+          </p>
+          <p>
+            宋代以后八段锦逐渐形成：
+            经道士的传播，八段锦得以流传和发展。按习练体势可以将八段锦分为立式和坐式。
+            坐式八段锦受道家思想影响较深，重在静养心神，主要以吐纳以及自我按摩相结合的方式为主，偏于静养，力度温和，动作幅度小，偏于腰部以上的肢体运动。
+            立式八段锦是指以动作导引为主的肢体运动，立式重于“摇筋骨、动肢节”，动作幅度大，有利于全身肢体的协调运动。
+          </p>
+          <p>
+            八段锦发展于明清：明清时期，封建皇权统治不断加深，社会稳定，经济繁荣，印刷术大力发展，为功法类著作的传播提供了物质基础，坐式八段锦得到广泛流传。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail">
+      <div class="detail-box content">
+        <div class="trapezoid-box1">
+          <img src="img/sports07.jpg" alt="" />
+        </div>
+        <div class="detail-introduce">
+          <h1>蹴鞠</h1>
+          <p>
+            蹴鞠，当代足球的鼻祖。
+            在《战国策》和《史记》中都有对于蹴鞠的记载。在汉朝刘向著的《别录》中，这样记载：“蹴鞠，黄帝所造，本兵势也，或云起于战国，古人蹋蹴以为戏。”更是把其历史追溯到了黄帝。
+          </p>
+          <p>
+            据历史记载，在汉朝，蹴鞠是很流行的运动，而且，此时，从军营到民间，开始普及了。估计当时卫青、霍去病都曾玩过。而且，因为蹴鞠讲团队配合，讲变化，讲阵容，可以算是小小的演习，用来操练士兵最是实用。
+            到了唐宋时期，蹴鞠更为普通。特别是在宋朝，大名鼎鼎的宋徽宗最喜欢这项运动。而宋朝皇室的这个喜好，据说是从宋太祖那里传下来的。在中国画里有一幅《宋太祖蹴鞠图》，画的是宋太祖赵匡胤与丞相赵普等人蹴鞠的场景。到了宋徽宗那里，更是玩出了新花样。《水浒传》里著名的高俅，算是当时这个运动的翘楚。
+          </p>
+        </div>
+      </div>
+      <div class="detail-box content">
+        <div class="detail-introduce">
+          <h1>围棋</h1>
+          <p>
+            围棋，一种策略型两人棋类游戏，中国古时称“弈”，西方名称“Go”。流行于东亚国家(中、日、韩、朝)，属琴棋书画四艺之一围棋起源于中国，传为帝尧所作，春秋战国时期即有记载。隋唐时经朝鲜传入日本，流传到欧美各国。围棋蕴含着中华文化的丰富内涵，它是中国文化与文明的体现。
+          </p>
+          <p>
+            围棋至今已有4000多年的历史。据先秦典籍《世本》记载:“尧造围棋，丹朱善之。”晋张华在《博物志》中继承并发展了这种说法:“尧造围棋，以教子丹朱。若白:舜以子商均愚，故作围棋以教之。”1964年版的《大英百科全书》就采纳这种说法，甚至将其确切年代定在公元前2356年。
+          </p>
+          <p>围棋之中深藏着绝妙的辩证法，深远的思考、无穷的变化，是围棋的魅力所在。</p>
+        </div>
+        <div class="trapezoid-box2">
+          <img src="img/sports08.jpg" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <div class="shell content">
+      <div class="box">
+        <img src="img/sports01.jpg" autoplay="autoplay" loop="loop" />
+        <span>投壶</span>
+      </div>
+      <div class="box">
+        <img src="img/sports02.jpg" alt="" />
+        <span>冰嬉</span>
+      </div>
+      <div class="box">
+        <img src="img/sports13.jpg" alt="" />
+        <span>龙舟</span>
+      </div>
+      <div class="box">
+        <img src="img/sports04.jpg" alt="" />
+        <span>投空竹</span>
+      </div>
+      <div class="box">
+        <img src="img/sports05.jpg" alt="" />
+        <span>捶丸</span>
+      </div>
+    </div>
+    <!-- ----------------------------------------------------- -->
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible')
+          }
+        })
+      })
+
+      document.querySelectorAll('.content').forEach((section) => {
+        observer.observe(section)
+      })
+    </script>
+  </body>
+</html>

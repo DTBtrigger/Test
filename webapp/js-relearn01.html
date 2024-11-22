@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+    </style>
+  </head>
+  <body>
+    <div class="test">
+
+    </div>
+    <script>
+      'use strict'
+      let person = {
+        name: 'zhang',
+        age: 13,
+        tags: ['js', 'java', 'web', '...']
+      }
+      person.email = '1111@qq.com'
+      delete person.tags
+      let message = `hello
+                    world
+                    你好 ${person.name}`
+      //   console.log(message)
+      let arr = ['A', 'C', 'B']
+      let arr2 = arr.sort()
+
+      let m = new Map([
+        ['tom', 100],
+        ['jack', 90]
+      ])
+      console.log(m.get('tom'))
+      m.set('lili', 95)
+      console.log(m)
+
+      // function abs(x) {
+      //   if (typeof x !== 'number') {
+      //     throw 'not a number'
+      //   }
+      //   if (x > 0) {
+      //     return x
+      //   } else {
+      //     return -x
+      //   }
+      // }
+
+      let abs = function (x) {
+        if (typeof x !== 'number') {
+          throw 'not a number'
+        }
+        if (x > 0) {
+          return x
+        } else {  
+          return -x
+        }
+      }
+    </script>
+  </body>
+</html>

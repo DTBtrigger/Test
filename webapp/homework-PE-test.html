@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .shell {
+        width: 95%;
+        height: 330px;
+        display: flex;
+        margin: 60px auto;
+      }
+
+      .box {
+        flex: 1;
+        height: 100%;
+        overflow: hidden;
+        transition: 0.5s;
+        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        border: 3px solid #fff;
+        background-color: #fff;
+        position: relative;
+      }
+
+      .box > img {
+        width: 200%;
+        height: 85%;
+        object-fit: cover;
+        transition: 0.5s;
+      }
+
+      .box > span {
+        font: 200 35px;
+        text-align: center;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        bottom: -100%; /* 初始位置在盒子下方 */
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.6); /* 背景色加深对比 */
+        color: #fff;
+        opacity: 0; /* 初始透明 */
+        transition: bottom 0.5s ease, opacity 0.5s ease;
+      }
+
+      .box:hover > img {
+        opacity: 0; /* 图片逐渐隐藏 */
+        transition: opacity 0.5s ease;
+      }
+
+      .box:hover > span {
+        bottom: 0; /* 移入视图 */
+        opacity: 1; /* 显示文字 */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell content">
+      <div class="box">
+        <img src="img/sports01.jpg" autoplay="autoplay" loop="loop" />
+        <span>投壶</span>
+      </div>
+      <div class="box">
+        <img src="img/sports02.jpg" alt="" />
+        <span>冰嬉</span>
+      </div>
+      <div class="box">
+        <img src="img/sports03.jpg" alt="" />
+        <span>蹴鞠</span>
+      </div>
+      <div class="box">
+        <img src="img/sports04.jpg" alt="" />
+        <span>投空竹</span>
+      </div>
+      <div class="box">
+        <img src="img/sports05.jpg" alt="" />
+        <span>捶丸</span>
+      </div>
+    </div>
+  </body>
+</html>
