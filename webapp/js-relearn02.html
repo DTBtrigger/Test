@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="full-name">
+      <button type="button" onclick="show2()">点击将获取全名</button>
+    </div>
+    <div id="full-name">
+      <button type="button" onclick="show()">点击将获取全名</button>
+    </div>
+    <div id="change">这段文字每3秒钟会扩展一次</div>
+    <input type="text" onkeyup="upperCase(this)" />
+    <!-- <button type="button"></button> -->
+    <script>
+      let toCelsius = (f) => (5 / 9) * (f - 32)
+      console.log(toCelsius(54))
+      console.log(`新的温度是${toCelsius(56)}`)
+      let person = {
+        firstName: 'Tom',
+        lastName: 'White',
+        getFullName() {
+          return this.firstName + '/' + this.lastName
+        }
+      }
+      let show = () => {
+        console.log('进入show()')
+        document.getElementById('full-name').innerHTML = person.getFullName()
+      }
+      let show2 = () => {
+        console.log('进入show2()')
+        document.getElementsByClassName('full-name')[0].innerHTML = person.getFullName()
+      }
+
+      let upperCase = (input) => {
+        // input = input.toString().toUpperCase()
+        console.log(input + typeof input)
+      }
+      console.log(person.getFullName())
+      let str1 = '预备，起飞！ '
+      let str2 = ''
+      let changeStr = () => {
+        str2 = str2 + str1 + '</br>'
+        document.getElementById('change').innerHTML = str2
+      }
+      setInterval(changeStr, 3000)
+      // ==================================================
+      console.log('1') // 同步任务
+
+      setTimeout(() => {
+        console.log('2') // 宏任务（setTimeout）
+      }, 0)
+
+      Promise.resolve().then(() => {
+        console.log('3') // 微任务（Promise.then）
+      })
+
+      console.log('4') // 同步任务
+      // =============================================
+      document.write('会覆盖吗')
+    </script>
+  </body>
+</html>
