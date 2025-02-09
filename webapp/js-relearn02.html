@@ -4,6 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      #large {
+        width: 400px;
+        height: 400px;
+        position: relative;
+        background-color: aquamarine;
+      }
+      #small {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        background-color: cadetblue;
+        left: 5px;
+        top: 5px;
+      }
+      #mousetest {
+        width: 200px;
+        height: 50px;
+        text-align: center;
+
+        background-color: bisque;
+      }
+    </style>
   </head>
   <body>
     <div class="full-name">
@@ -14,7 +37,23 @@
     </div>
     <div id="change">这段文字每3秒钟会扩展一次</div>
     <input type="text" onkeyup="upperCase(this)" />
-    <!-- <button type="button"></button> -->
+    <button type="button" onclick="document.write('点击这个按钮，所有内容会被覆盖')">
+      点击覆盖
+    </button>
+    <form action="" name="form01" autocomplete="on">
+      name:
+      <input type="text" name="username" required />
+      age:
+      <input type="number" name="age" min="1" max="65" />
+      <input type="submit" />
+    </form>
+    <div id="large">
+      <div id="small"></div>
+    </div>
+    <div id="mousetest" onmousedown="mDown(this)" onclick="mClick(this)" onmouseup="mUp(this)">
+      点击鼠标看看
+    </div>
+    <button onclick="move()">开始动画</button>
     <script>
       let toCelsius = (f) => (5 / 9) * (f - 32)
       console.log(toCelsius(54))
@@ -37,7 +76,8 @@
 
       let upperCase = (input) => {
         // input = input.toString().toUpperCase()
-        console.log(input + typeof input)
+        input.value = input.value.toUpperCase()
+        console.log(input.value)
       }
       console.log(person.getFullName())
       let str1 = '预备，起飞！ '
@@ -46,7 +86,7 @@
         str2 = str2 + str1 + '</br>'
         document.getElementById('change').innerHTML = str2
       }
-      setInterval(changeStr, 3000)
+      // setInterval(changeStr, 3000)
       // ==================================================
       console.log('1') // 同步任务
 
@@ -61,6 +101,47 @@
       console.log('4') // 同步任务
       // =============================================
       document.write('会覆盖吗')
+      // ================================================
+      let isempty = () => {
+        let input = document.forms['form01']['username'].value
+        if (input == '') {
+          alert('姓名不能为空')
+        } else {
+          alert('提交成功')
+        }
+      }
+      // ===================================================
+      let move = () => {
+        let pos = 0
+        let x = document.getElementById('small')
+
+        let step = () => {
+          if (pos === 350) {
+            clearInterval(id)
+          } else {
+            pos++
+            x.style.left = pos + 'px'
+            x.style.top = pos + 'px'
+          }
+        }
+
+        let id = setInterval(step, 5)
+      }
+      // =========================================
+      let mDown = (some) => {
+        some.innerHTML = '按下鼠标'
+        some.style.backgroundColor = 'green'
+      }
+      let mClick = (some) => {
+        some.innerHTML = '点击鼠标'
+      }
+      let mUp = (some) => {
+        some.innerHTML = '释放鼠标按钮'
+        some.style.backgroundColor = 'lightblue'
+      }
+      // console.log('+++++' + document.getElementById('small').style.left + '======')
+      // console.log(typeof document.getElementById('small').style.left)
+      // console.log(typeof 2)
     </script>
   </body>
 </html>
