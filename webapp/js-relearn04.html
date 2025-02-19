@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      input[type='text'] {
+        border: 1px solid #ccc;
+        width: 250px;
+        height: 20px;
+        border-radius: 5px;
+      }
+      /* form input[type='submit'] {
+        border: 1px solid #19641f;
+        border-radius: 5px;
+        color: white;
+        background-color: #2fa839;
+      } */
+    </style>
+  </head>
+  <body>
+    <form name="form01" id="register">
+      姓：
+      <input type="text" name="firstName" value="zhang" onkeyup="getFullName()" />
+      <br />
+      名：
+      <input type="text" name="lastName" value="san" onkeyup="getFullName()" />
+      <br />
+      全名：
+      <span id="fname"></span>
+      <br />
+      <label>
+        <input type="checkbox" name="term" onchange="checkDegree(this)" />
+        同意
+        <a href="#">条款</a>
+        才能提交
+      </label>
+      <br />
+      <button type="button" name="course" value="2" onclick="showCourse(this)">第2门课</button>
+
+      <input type="submit" disabled />
+    </form>
+    <script>
+      let person = {
+        firstname: 'zhang',
+        lastname: 'san'
+      }
+      console.log(11111)
+      let getFullName = () => {
+        // let input = document.forms['form01']['firstname'].value
+        // console.log(input)
+        // console.log(person.firstname)
+        // console.log(person.lastname)
+        let firstName = document.forms['form01']['firstName'].value
+        let lastName = document.forms['form01']['lastName'].value
+        console.log(firstName)
+        console.log(lastName)
+        document.getElementById('fname').innerHTML = firstName + '-' + lastName
+      }
+
+      let checkDegree = (input) => {
+        console.log('进入判断')
+        let submitButton = document.querySelector('#register input[type=submit]')
+        console.log(input.checked, submitButton.disabled)
+        submitButton.disabled = !input.checked
+      }
+      let showCourse = (input) => {
+        console.log(input.value)
+        console.log('进入了')
+      }
+    </script>
+  </body>
+</html>

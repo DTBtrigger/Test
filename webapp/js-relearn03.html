@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let person1 = { name: '李华', age: 15 }
+      let person2 = person1
+      person1.age = 18
+      person2.name = '韩梅梅'
+      console.log(person2.name)
+      console.log(person2.age)
+      console.log(person1.name)
+      console.log(person2.age)
+      let obj1 = {
+        a: 10,
+        fn: function (x) {
+          console.log(this.a + x)
+        }
+      }
+      let obj2 = {
+        a: 20,
+        fn: function (x) {
+          console.log(this.a - x)
+        }
+      }
+      obj1.fn.call(obj2, 20)
+    </script>
+  </body>
+</html>

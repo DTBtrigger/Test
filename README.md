@@ -77,3 +77,19 @@
       let id = setInterval(step, 5)
     }
   ```
+
+- **问题：** 点击按钮时，没有输出对应的`value`值
+
+  ```javaScript
+  <button name="course" value="2" onclick="showCourse(this)">第2门课</button>
+
+  let showCourse = (input) => {
+    console.log(input.value)
+    console.log('进入了')
+  }
+
+  ```
+
+  **原因：** 不是没输出，而是输出了但页面被刷新，导致我没看见输出。  
+  HTML 中`button`默认情况下会提交表单，导致页面刷新
+  **解决：** 显式声明`button`类型：`type='button'`

@@ -26,6 +26,12 @@
 
         background-color: bisque;
       }
+      input[type='text'] {
+        border: 1px solid #ccc;
+        height: 30px;
+        width: 300px;
+        border-radius: 10px;
+      }
     </style>
   </head>
   <body>
@@ -36,7 +42,11 @@
       <button type="button" onclick="show()">点击将获取全名</button>
     </div>
     <div id="change">这段文字每3秒钟会扩展一次</div>
-    <input type="text" onkeyup="upperCase(this)" />
+    <input
+      type="text"
+      onkeyup="upperCase(this)"
+      placeholder="你输入的所有字母都会被转换成大写"
+      style="width: 500px" />
     <button type="button" onclick="document.write('点击这个按钮，所有内容会被覆盖')">
       点击覆盖
     </button>
@@ -54,6 +64,9 @@
       点击鼠标看看
     </div>
     <button onclick="move()">开始动画</button>
+    <div id="test-promise"></div>
+
+    <!-- <input type="text"> -->
     <script>
       let toCelsius = (f) => (5 / 9) * (f - 32)
       console.log(toCelsius(54))
@@ -97,7 +110,6 @@
       Promise.resolve().then(() => {
         console.log('3') // 微任务（Promise.then）
       })
-
       console.log('4') // 同步任务
       // =============================================
       document.write('会覆盖吗')
@@ -142,6 +154,25 @@
       // console.log('+++++' + document.getElementById('small').style.left + '======')
       // console.log(typeof document.getElementById('small').style.left)
       // console.log(typeof 2)
+      // ==============================================
+      let myPromise = new Promise(function (myResult, myReject) {
+        let x = 0
+
+        if (x === 0) {
+          myResult('ok')
+        } else {
+          myReject('error')
+        }
+      })
+      myPromise.then(
+        function (value) {
+          document.getElementById('test-promise').innerHTML = value
+        },
+        function (value) {
+          document.getElementById('test-promise').innerHTML = value
+        }
+      )
+      // ====================================================
     </script>
   </body>
 </html>
