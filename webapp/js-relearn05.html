@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test1"></div>
+    <script>
+      let a = 5
+      let b = 6
+      console.log(1)
+      let calculate = (a, b, callback) => {
+        console.log('进入calculate函数')
+        let sum = a + b
+        callback(sum)
+        console.log('要出calculate函数了')
+      }
+      let display = (some) => {
+        console.log('进入display函数')
+        document.getElementById('test1').innerHTML = some
+      }
+      console.log(2)
+      calculate(a, b, display)
+      console.log(3)
+
+      for (let i = 0; i < 3; i++) {
+        setTimeout(() => {
+          console.log(i + '---')
+        }, 2000)
+      }
+
+      let numList = [1, 2, 3]
+      for (let i = 0; i < 3; i++) {
+        setTimeout(() => {
+          console.log(numList[i] + '===')
+        }, 0)
+      }
+    </script>
+  </body>
+</html>
